@@ -3,8 +3,8 @@ require "pg"
 
 set :bind, '0.0.0.0'  # bind to all interfaces
 
-# system "psql todo < schema.sql"
-# system "psql todo < seeder.sql"
+system "psql todo < schema.sql"
+system "psql todo < seeder.sql"
 
 def db_connection
   begin
