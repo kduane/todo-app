@@ -1,5 +1,7 @@
 require "sinatra"
 require "pg"
+require "pry" if development? || test?
+require "sinatra/reloader" if development?
 
 set :bind, '0.0.0.0'  # bind to all interfaces
 
@@ -16,7 +18,9 @@ def db_connection
 end
 
 get "/tasks" do
+  @tasks = nil
   #Get your tasks from the database
+  binding.pry
   erb :index
 end
 
