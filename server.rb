@@ -19,8 +19,12 @@ end
 
 get "/tasks" do
   @tasks = nil
+  get_sql = "SELECT name FROM tasks"
   #Get your tasks from the database
-  binding.pry
+  db_connection do |conn|
+    @tasks = conn.exec(get_sql)
+  end
+  # binding.pry
   erb :index
 end
 
@@ -31,6 +35,7 @@ end
 
 post "/tasks" do
   # Read the input from the form the user filled out
+  add_sql = "INSERT INTO tasks (name) VALUES ('task')"
   task = params["task_name"]
 
   # Insert new task into the database

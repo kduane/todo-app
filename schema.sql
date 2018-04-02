@@ -2,7 +2,7 @@
 -- the table before re-creating it. Note that you'll lose any
 -- data if you drop and add a table:
 
--- DROP TABLE IF EXISTS tasks;
+DROP TABLE IF EXISTS tasks;
 
 -- Define your schema here:
 CREATE TABLE tasks (
