@@ -35,11 +35,13 @@ end
 
 post "/tasks" do
   # Read the input from the form the user filled out
-  add_sql = "INSERT INTO tasks (name) VALUES ('task')"
   task = params["task_name"]
 
   # Insert new task into the database
 
+  db_connection do |conn|
+    conn.exec_params("INSERt INTO tasks (name) VALUES ($1)", [task])
+  end
   # Send the user back to the home page which shows
   # the list of tasks
   redirect "/tasks"
